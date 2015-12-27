@@ -6,7 +6,7 @@ return 3 (11 = 5 + 5 + 1)
 
 Example 2:
 coins = [2], amount = 3
-return -1.
+return -1.  havn't worked out yet!!!!!!!!!!!!!!!!!!!!!!!!!
 
 Note:
 You may assume that you have an infinite number of each kind of coin.'''
