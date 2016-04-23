@@ -1,0 +1,15 @@
+#https://leetcode.com/discuss/82822/solution-explanation
+def minPatches(nums, n):
+    length = len(nums)
+    i, addnum, count= 0, 1, 0
+    while addnum<= n:
+        if i< length and nums[i]<= addnum:
+            addnum += nums[i]
+            i += 1
+        else:
+            addnum += addnum
+            count += 1
+    return count
+print minPatches([1,2,4,13,43], 100)
+     
+    
