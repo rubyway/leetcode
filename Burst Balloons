@@ -1,0 +1,28 @@
+"""给定 n 个气球, 序号是0 到 n-1. 每一个气球上面会被涂上一个数字，这些数字放在列表 nums里. 你被要求戳破气球. 如果你戳破气球 i 你将得到nums[左边] * nums[i] * nums[右边] 个金币. 其中左边 和 右边 是挨着 i的两个气球. 戳破之后, 左边 和 右边就相邻了。
+
+找到你能通过这个游戏获取到的最大金币数。
+
+注意: 
+(1)你可以认为 nums[-1] = nums[n] = 1. 它们并不真实存在，所以你无法戳破它们.
+(2) 0 ≤ n ≤ 500, 0 ≤ nums[i] ≤ 100
+
+例子:
+
+给定 [3, 1, 5, 8]
+
+返回 167
+
+    nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
+   coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167"""
+def maxCoins(nums):
+    length1 = len(nums)
+    tempnums = [1] + nums + [1]
+    length2 = len(tempnums)
+    dp = [[0]*length2 for i in range(length2)]
+    for k in range(2, length2):
+        for l in range(length2- k):
+            r = l+ k
+            for i in range(l+1, r):
+                dp[l][r] = max(dp[l][r], tempnums[l]* tempnums[i]* tempnums[r] + dp[l][i]+ dp[i][r])
+    return dp[0][length2- 1]
+print maxCoins([3, 1, 5, 8])  
