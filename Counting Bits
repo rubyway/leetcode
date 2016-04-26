@@ -1,0 +1,9 @@
+def countBits(num):
+    ans = [0]
+    for x in range(1, num + 1):
+        temp1 = ans[x>>1]
+        temp2 = x & 1
+        temp3 = (temp1+ temp2)
+        ans.append(temp3)
+    return ans
+print countBits(5)
